@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Php操作mongodb的CURD // 皮皮达的笔记</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://pipida323.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Php操作mongodb的CURD"/>
+<meta name="twitter:description" content="连接MongoDB $manager = new MongoDB\Driver\Manager(&#39;mongodb://localhost:27017&#39;);  查询数据 1.需要使用到的类：MongoDB\Driver\Query $query = new MongoDB\Driver\Query($where,$options);	 2.参数$where、$options为查询的条件 - $where = [ ]; - $options = [ ]  3.执行查询 $manager-&gt;executeQuery(&lsquo;数据库.集合名&rsquo;,$query) $result = $manager-&gt;executeQuery(&#39;gzd.stus&#39;,$query);  4.遍历结果 foreach($result as $res){ var_dump($res); echo &quot;&lt;br&gt;&quot;; }  最终结果展示 object(stdClass)#6 (4) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2d8b47d1f78ef18ceb766d&quot; } [&quot;name&quot;]=&gt; string(9) &quot;谷宗达&quot; [&quot;age&quot;]=&gt; int(20) [&quot;gender&quot;]=&gt; string(3) &quot;男&quot; } object(stdClass)#8 (4) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2d92c08123493e05a00127&quot; } [&quot;name&quot;]=&gt; string(6) &quot;公婆&quot; [&quot;age&quot;]=&gt; float(18) [&quot;gender&quot;]=&gt; string(6) &quot;不明&quot; } object(stdClass)#5 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2db5068123493e05a00128&quot; } [&quot;name&quot;]=&gt; string(6) &quot;狗米&quot; [&quot;age&quot;]=&gt; float(20) } object(stdClass)#7 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#8 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2db5068123493e05a00129&quot; } [&quot;name&quot;]=&gt; string(9) &quot;哈麻皮&quot; [&quot;tel&quot;]=&gt; float(123456) } object(stdClass)#6 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d37ca525854f9f3d0f08818&quot; } [&quot;name&quot;]=&gt; string(1) &quot;a&quot; [&quot;age&quot;]=&gt; float(12) } object(stdClass)#8 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d37ca545854f9f3d0f08819&quot; } [&quot;name&quot;]=&gt; string(1) &quot;a&quot; [&quot;age&quot;]=&gt; float(12) } object(stdClass)#5 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d383d00a592c30a4c005122&quot; } [&quot;name&quot;]=&gt; string(4) &quot;jiba&quot; [&quot;age&quot;]=&gt; int(20) }  插入数据 需要使用到的类：Mongo\Driver\BulkWrite $bulk = new MongoDB\Driver\BulkWrite;	//实例化 $bulk-&gt;insert([&#39;name&#39;=&gt;&#39;gzd&#39;,&#39;age&#39;=&gt;20]);	//准备数据 $manager = new MongoDB\Driver\Manager(&#39;mongodb://localhost:27017&#39;);	//连接MongoDB $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000); //固定用法 $result = $manager-&gt;executeBulkWrite(&#39;gzd."/>
+
+    <meta property="og:title" content="Php操作mongodb的CURD" />
+<meta property="og:description" content="连接MongoDB $manager = new MongoDB\Driver\Manager(&#39;mongodb://localhost:27017&#39;);  查询数据 1.需要使用到的类：MongoDB\Driver\Query $query = new MongoDB\Driver\Query($where,$options);	 2.参数$where、$options为查询的条件 - $where = [ ]; - $options = [ ]  3.执行查询 $manager-&gt;executeQuery(&lsquo;数据库.集合名&rsquo;,$query) $result = $manager-&gt;executeQuery(&#39;gzd.stus&#39;,$query);  4.遍历结果 foreach($result as $res){ var_dump($res); echo &quot;&lt;br&gt;&quot;; }  最终结果展示 object(stdClass)#6 (4) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2d8b47d1f78ef18ceb766d&quot; } [&quot;name&quot;]=&gt; string(9) &quot;谷宗达&quot; [&quot;age&quot;]=&gt; int(20) [&quot;gender&quot;]=&gt; string(3) &quot;男&quot; } object(stdClass)#8 (4) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2d92c08123493e05a00127&quot; } [&quot;name&quot;]=&gt; string(6) &quot;公婆&quot; [&quot;age&quot;]=&gt; float(18) [&quot;gender&quot;]=&gt; string(6) &quot;不明&quot; } object(stdClass)#5 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2db5068123493e05a00128&quot; } [&quot;name&quot;]=&gt; string(6) &quot;狗米&quot; [&quot;age&quot;]=&gt; float(20) } object(stdClass)#7 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#8 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2db5068123493e05a00129&quot; } [&quot;name&quot;]=&gt; string(9) &quot;哈麻皮&quot; [&quot;tel&quot;]=&gt; float(123456) } object(stdClass)#6 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d37ca525854f9f3d0f08818&quot; } [&quot;name&quot;]=&gt; string(1) &quot;a&quot; [&quot;age&quot;]=&gt; float(12) } object(stdClass)#8 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d37ca545854f9f3d0f08819&quot; } [&quot;name&quot;]=&gt; string(1) &quot;a&quot; [&quot;age&quot;]=&gt; float(12) } object(stdClass)#5 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d383d00a592c30a4c005122&quot; } [&quot;name&quot;]=&gt; string(4) &quot;jiba&quot; [&quot;age&quot;]=&gt; int(20) }  插入数据 需要使用到的类：Mongo\Driver\BulkWrite $bulk = new MongoDB\Driver\BulkWrite;	//实例化 $bulk-&gt;insert([&#39;name&#39;=&gt;&#39;gzd&#39;,&#39;age&#39;=&gt;20]);	//准备数据 $manager = new MongoDB\Driver\Manager(&#39;mongodb://localhost:27017&#39;);	//连接MongoDB $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000); //固定用法 $result = $manager-&gt;executeBulkWrite(&#39;gzd." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pipida323.github.io/post/php%E6%93%8D%E4%BD%9Cmongodb%E7%9A%84curd/" />
+<meta property="article:published_time" content="2019-07-24T19:20:03&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-24T19:20:03&#43;08:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://pipida323.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>皮皮达的笔记</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Php操作mongodb的CURD</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jul 24, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h2 id="连接mongodb">连接MongoDB</h2>
+
+<pre><code class="language-php">$manager = new MongoDB\Driver\Manager('mongodb://localhost:27017');
+</code></pre>
+
+<hr />
+
+<h2 id="查询数据">查询数据</h2>
+
+<h4 id="1-需要使用到的类-mongodb-driver-query">1.需要使用到的类：MongoDB\Driver\Query</h4>
+
+<pre><code class="language-php">$query = new MongoDB\Driver\Query($where,$options);		
+</code></pre>
+
+<hr />
+
+<h4 id="2-参数-where-options为查询的条件">2.参数$where、$options为查询的条件</h4>
+
+<pre><code>- $where = [ ];
+- $options = [ ]
+</code></pre>
+
+<hr />
+
+<h4 id="3-执行查询">3.执行查询</h4>
+
+<h5 id="manager-executequery-数据库-集合名-query">$manager-&gt;executeQuery(&lsquo;数据库.集合名&rsquo;,$query)</h5>
+
+<pre><code class="language-php">$result = $manager-&gt;executeQuery('gzd.stus',$query);
+</code></pre>
+
+<hr />
+
+<h4 id="4-遍历结果">4.遍历结果</h4>
+
+<pre><code class="language-php">foreach($result as $res){
+	var_dump($res);
+	echo &quot;&lt;br&gt;&quot;;
+}
+
+</code></pre>
+
+<hr />
+
+<h2 id="最终结果展示">最终结果展示</h2>
+
+<pre><code class="language-html">object(stdClass)#6 (4) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2d8b47d1f78ef18ceb766d&quot; } [&quot;name&quot;]=&gt; string(9) &quot;谷宗达&quot; [&quot;age&quot;]=&gt; int(20) [&quot;gender&quot;]=&gt; string(3) &quot;男&quot; } 
+object(stdClass)#8 (4) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2d92c08123493e05a00127&quot; } [&quot;name&quot;]=&gt; string(6) &quot;公婆&quot; [&quot;age&quot;]=&gt; float(18) [&quot;gender&quot;]=&gt; string(6) &quot;不明&quot; } 
+object(stdClass)#5 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2db5068123493e05a00128&quot; } [&quot;name&quot;]=&gt; string(6) &quot;狗米&quot; [&quot;age&quot;]=&gt; float(20) } 
+object(stdClass)#7 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#8 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d2db5068123493e05a00129&quot; } [&quot;name&quot;]=&gt; string(9) &quot;哈麻皮&quot; [&quot;tel&quot;]=&gt; float(123456) } 
+object(stdClass)#6 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d37ca525854f9f3d0f08818&quot; } [&quot;name&quot;]=&gt; string(1) &quot;a&quot; [&quot;age&quot;]=&gt; float(12) } 
+object(stdClass)#8 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d37ca545854f9f3d0f08819&quot; } [&quot;name&quot;]=&gt; string(1) &quot;a&quot; [&quot;age&quot;]=&gt; float(12) } 
+object(stdClass)#5 (3) { [&quot;_id&quot;]=&gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&quot;oid&quot;]=&gt; string(24) &quot;5d383d00a592c30a4c005122&quot; } [&quot;name&quot;]=&gt; string(4) &quot;jiba&quot; [&quot;age&quot;]=&gt; int(20) }
+</code></pre>
+
+<hr />
+
+<h2 id="插入数据">插入数据</h2>
+
+<h3 id="需要使用到的类-mongo-driver-bulkwrite">需要使用到的类：Mongo\Driver\BulkWrite</h3>
+
+<pre><code class="language-php">$bulk = new MongoDB\Driver\BulkWrite;		//实例化
+
+$bulk-&gt;insert(['name'=&gt;'gzd','age'=&gt;20]);	//准备数据
+
+$manager = new MongoDB\Driver\Manager('mongodb://localhost:27017');		//连接MongoDB
+
+$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);  		//固定用法
+
+$result = $manager-&gt;executeBulkWrite('gzd.stus', $bulk, $writeConcern);		//插入到gzd数据库下的stus集合
+</code></pre>
+
+<hr />
+
+<h2 id="更新数据">更新数据</h2>
+
+<h3 id="需要使用到的类-mongo-driver-bulkwrite-1">需要使用到的类：Mongo\Driver\BulkWrite</h3>
+
+<pre><code class="language-php">$bulk = new MongoDB\Driver\BulkWrite;		//实例化
+
+$bulk-&gt;update(
+	['name'=&gt;'gzd'],
+	['$set'=&gt;['name'=&gt;'gongpo']],
+	['multi' =&gt; false, 'upsert' =&gt; false]
+);		//准备数据
+
+$manager = new MongoDB\Driver\Manager('mongodb://localhost:27017');		//连接MongoDB
+
+$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);  		//固定用法
+
+$result = $manager-&gt;executeBulkWrite('gzd.stus', $bulk, $writeConcern);		//执行
+</code></pre>
+
+<hr />
+
+<h2 id="删除数据">删除数据</h2>
+
+<h3 id="需要使用到的类-mongo-driver-bulkwrite-2">需要使用到的类：Mongo\Driver\BulkWrite</h3>
+
+<pre><code class="language-php">$bulk = new MongoDB\Driver\BulkWrite;		//实例化
+
+$bulk-&gt;delete(['name'=&gt;jbw],['limit'=&gt;1])	//limit为1时 删除第一条匹配数据
+$bulk-&gt;delete(['name'=&gt;jbw],['limit'=&gt;0])	//limit为0时 删除所有匹配数据
+
+$manager = new MongoDB\Driver\Manager('mongodb://localhost:27017');		//连接MongoDB
+
+$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);  		//固定用法
+
+$result = $manager-&gt;executeBulkWrite('gzd.stus', $bulk, $writeConcern);		//执行
+</code></pre>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

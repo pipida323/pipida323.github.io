@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>MongoDB的php拓展 // 皮皮达的笔记</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://pipida323.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDB的php拓展"/>
+<meta name="twitter:description" content=" MongoDB拓展下载地址：http://pecl.php.net/package/mongodb  选择对应PHP的版本下载 将php_mongodb.dll文件添加到对应版本PHP的ext文件中 修改php.ini，添加extension=php_mongodb.dll 重启Apache，查看phpinfo中是否开启MongoDB拓展  PHP操作MongoDB 开发文档：http://php.net/manual/zh/book.mongodb.php 连接MongoDB：$mongo = new MongoDB\Driver\Manager(&lsquo;mongodb://用户名:密码@主机ip:端口号/数据库名&rsquo;); &lt;?php $mongo = new MongoDB\Driver\Manager(&#39;mongodb://root:123456@127.0.0.1:27017/gzd&#39;); var_dump($mongo); ?&gt;  "/>
+
+    <meta property="og:title" content="MongoDB的php拓展" />
+<meta property="og:description" content=" MongoDB拓展下载地址：http://pecl.php.net/package/mongodb  选择对应PHP的版本下载 将php_mongodb.dll文件添加到对应版本PHP的ext文件中 修改php.ini，添加extension=php_mongodb.dll 重启Apache，查看phpinfo中是否开启MongoDB拓展  PHP操作MongoDB 开发文档：http://php.net/manual/zh/book.mongodb.php 连接MongoDB：$mongo = new MongoDB\Driver\Manager(&lsquo;mongodb://用户名:密码@主机ip:端口号/数据库名&rsquo;); &lt;?php $mongo = new MongoDB\Driver\Manager(&#39;mongodb://root:123456@127.0.0.1:27017/gzd&#39;); var_dump($mongo); ?&gt;  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pipida323.github.io/post/mongodb%E7%9A%84php%E6%8B%93%E5%B1%95/" />
+<meta property="article:published_time" content="2019-07-24T18:23:23&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-24T18:23:23&#43;08:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://pipida323.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>皮皮达的笔记</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">MongoDB的php拓展</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jul 24, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h2 id="mongodb拓展下载地址-http-pecl-php-net-package-mongodb">MongoDB拓展下载地址：<a href="http://pecl.php.net/package/mongodb">http://pecl.php.net/package/mongodb</a></h2>
+
+<ol>
+<li>选择对应PHP的版本下载</li>
+<li>将php_mongodb.dll文件添加到对应版本PHP的ext文件中</li>
+<li>修改php.ini，添加extension=php_mongodb.dll</li>
+<li>重启Apache，查看phpinfo中是否开启MongoDB拓展</li>
+</ol>
+
+<hr />
+
+<h2 id="php操作mongodb">PHP操作MongoDB</h2>
+
+<h3 id="开发文档-http-php-net-manual-zh-book-mongodb-php">开发文档：<a href="http://php.net/manual/zh/book.mongodb.php">http://php.net/manual/zh/book.mongodb.php</a></h3>
+
+<h4 id="连接mongodb-mongo-new-mongodb-driver-manager-mongodb-用户名-密码-主机ip-端口号-数据库名">连接MongoDB：$mongo = new MongoDB\Driver\Manager(&lsquo;mongodb://用户名:密码@主机ip:端口号/数据库名&rsquo;);</h4>
+
+<pre><code class="language-php">&lt;?php
+$mongo = new MongoDB\Driver\Manager('mongodb://root:123456@127.0.0.1:27017/gzd');
+var_dump($mongo);
+?&gt;
+</code></pre>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>皮皮达的笔记</title>
+    <link>https://pipida323.github.io/</link>
+    <description>Recent content on 皮皮达的笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Jul 2019 20:39:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://pipida323.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redis命令应用场景</title>
+      <link>https://pipida323.github.io/post/redis%E5%91%BD%E4%BB%A4%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</link>
+      <pubDate>Wed, 24 Jul 2019 20:39:07 +0800</pubDate>
+      
+      <guid>https://pipida323.github.io/post/redis%E5%91%BD%E4%BB%A4%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</guid>
+      <description> expire key 秒数  限时优惠活动信息 网站数据缓存（对于一些需要定时更新的数据，例如：积分排行榜） 手机验证码 限制网站访问频率  </description>
+    </item>
+    
+    <item>
+      <title>Redis基本命令</title>
+      <link>https://pipida323.github.io/post/redis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 24 Jul 2019 20:03:05 +0800</pubDate>
+      
+      <guid>https://pipida323.github.io/post/redis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</guid>
+      <description>key命令 del key
+key存在时删除key  若key存在，则删除并返回删除记录数 若key不存在，则提示0  127.0.0.1:6379&amp;gt; key * (error) ERR unknown command &#39;key&#39; 127.0.0.1:6379&amp;gt; keys * 1) &amp;quot;a&amp;quot; 127.0.0.1:6379&amp;gt; del a (integer) 1 127.0.0.1:6379&amp;gt; 127.0.0.1:6379&amp;gt; del a (integer) 0  exists key
+判断key是否存在 127.0.0.1:6379&amp;gt; keys * 1) &amp;quot;b&amp;quot; 2) &amp;quot;a&amp;quot; 127.0.0.1:6379&amp;gt; exists a b (integer) 2  ttl key
+查看key过期时间  -1表示永久 -2表示已过期  expire key 秒数
+设置key的过期时间 127.0.0.1:6379&amp;gt; expire b 30 (integer) 1 127.0.0.1:6379&amp;gt; ttl b (integer) 28 127.</description>
+    </item>
+    
+    <item>
+      <title>Php操作mongodb的CURD</title>
+      <link>https://pipida323.github.io/post/php%E6%93%8D%E4%BD%9Cmongodb%E7%9A%84curd/</link>
+      <pubDate>Wed, 24 Jul 2019 19:20:03 +0800</pubDate>
+      
+      <guid>https://pipida323.github.io/post/php%E6%93%8D%E4%BD%9Cmongodb%E7%9A%84curd/</guid>
+      <description>连接MongoDB $manager = new MongoDB\Driver\Manager(&#39;mongodb://localhost:27017&#39;);  查询数据 1.需要使用到的类：MongoDB\Driver\Query $query = new MongoDB\Driver\Query($where,$options);	 2.参数$where、$options为查询的条件 - $where = [ ]; - $options = [ ]  3.执行查询 $manager-&amp;gt;executeQuery(&amp;lsquo;数据库.集合名&amp;rsquo;,$query) $result = $manager-&amp;gt;executeQuery(&#39;gzd.stus&#39;,$query);  4.遍历结果 foreach($result as $res){ var_dump($res); echo &amp;quot;&amp;lt;br&amp;gt;&amp;quot;; }  最终结果展示 object(stdClass)#6 (4) { [&amp;quot;_id&amp;quot;]=&amp;gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&amp;quot;oid&amp;quot;]=&amp;gt; string(24) &amp;quot;5d2d8b47d1f78ef18ceb766d&amp;quot; } [&amp;quot;name&amp;quot;]=&amp;gt; string(9) &amp;quot;谷宗达&amp;quot; [&amp;quot;age&amp;quot;]=&amp;gt; int(20) [&amp;quot;gender&amp;quot;]=&amp;gt; string(3) &amp;quot;男&amp;quot; } object(stdClass)#8 (4) { [&amp;quot;_id&amp;quot;]=&amp;gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&amp;quot;oid&amp;quot;]=&amp;gt; string(24) &amp;quot;5d2d92c08123493e05a00127&amp;quot; } [&amp;quot;name&amp;quot;]=&amp;gt; string(6) &amp;quot;公婆&amp;quot; [&amp;quot;age&amp;quot;]=&amp;gt; float(18) [&amp;quot;gender&amp;quot;]=&amp;gt; string(6) &amp;quot;不明&amp;quot; } object(stdClass)#5 (3) { [&amp;quot;_id&amp;quot;]=&amp;gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&amp;quot;oid&amp;quot;]=&amp;gt; string(24) &amp;quot;5d2db5068123493e05a00128&amp;quot; } [&amp;quot;name&amp;quot;]=&amp;gt; string(6) &amp;quot;狗米&amp;quot; [&amp;quot;age&amp;quot;]=&amp;gt; float(20) } object(stdClass)#7 (3) { [&amp;quot;_id&amp;quot;]=&amp;gt; object(MongoDB\BSON\ObjectId)#8 (1) { [&amp;quot;oid&amp;quot;]=&amp;gt; string(24) &amp;quot;5d2db5068123493e05a00129&amp;quot; } [&amp;quot;name&amp;quot;]=&amp;gt; string(9) &amp;quot;哈麻皮&amp;quot; [&amp;quot;tel&amp;quot;]=&amp;gt; float(123456) } object(stdClass)#6 (3) { [&amp;quot;_id&amp;quot;]=&amp;gt; object(MongoDB\BSON\ObjectId)#5 (1) { [&amp;quot;oid&amp;quot;]=&amp;gt; string(24) &amp;quot;5d37ca525854f9f3d0f08818&amp;quot; } [&amp;quot;name&amp;quot;]=&amp;gt; string(1) &amp;quot;a&amp;quot; [&amp;quot;age&amp;quot;]=&amp;gt; float(12) } object(stdClass)#8 (3) { [&amp;quot;_id&amp;quot;]=&amp;gt; object(MongoDB\BSON\ObjectId)#7 (1) { [&amp;quot;oid&amp;quot;]=&amp;gt; string(24) &amp;quot;5d37ca545854f9f3d0f08819&amp;quot; } [&amp;quot;name&amp;quot;]=&amp;gt; string(1) &amp;quot;a&amp;quot; [&amp;quot;age&amp;quot;]=&amp;gt; float(12) } object(stdClass)#5 (3) { [&amp;quot;_id&amp;quot;]=&amp;gt; object(MongoDB\BSON\ObjectId)#6 (1) { [&amp;quot;oid&amp;quot;]=&amp;gt; string(24) &amp;quot;5d383d00a592c30a4c005122&amp;quot; } [&amp;quot;name&amp;quot;]=&amp;gt; string(4) &amp;quot;jiba&amp;quot; [&amp;quot;age&amp;quot;]=&amp;gt; int(20) }  插入数据 需要使用到的类：Mongo\Driver\BulkWrite $bulk = new MongoDB\Driver\BulkWrite;	//实例化 $bulk-&amp;gt;insert([&#39;name&#39;=&amp;gt;&#39;gzd&#39;,&#39;age&#39;=&amp;gt;20]);	//准备数据 $manager = new MongoDB\Driver\Manager(&#39;mongodb://localhost:27017&#39;);	//连接MongoDB $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000); //固定用法 $result = $manager-&amp;gt;executeBulkWrite(&#39;gzd.</description>
+    </item>
+    
+    <item>
+      <title>MongoDB的php拓展</title>
+      <link>https://pipida323.github.io/post/mongodb%E7%9A%84php%E6%8B%93%E5%B1%95/</link>
+      <pubDate>Wed, 24 Jul 2019 18:23:23 +0800</pubDate>
+      
+      <guid>https://pipida323.github.io/post/mongodb%E7%9A%84php%E6%8B%93%E5%B1%95/</guid>
+      <description> MongoDB拓展下载地址：http://pecl.php.net/package/mongodb  选择对应PHP的版本下载 将php_mongodb.dll文件添加到对应版本PHP的ext文件中 修改php.ini，添加extension=php_mongodb.dll 重启Apache，查看phpinfo中是否开启MongoDB拓展  PHP操作MongoDB 开发文档：http://php.net/manual/zh/book.mongodb.php 连接MongoDB：$mongo = new MongoDB\Driver\Manager(&amp;lsquo;mongodb://用户名:密码@主机ip:端口号/数据库名&amp;rsquo;); &amp;lt;?php $mongo = new MongoDB\Driver\Manager(&#39;mongodb://root:123456@127.0.0.1:27017/gzd&#39;); var_dump($mongo); ?&amp;gt;  </description>
+    </item>
+    
+    <item>
+      <title>Hugo指令</title>
+      <link>https://pipida323.github.io/post/hugo%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Wed, 24 Jul 2019 13:54:28 +0800</pubDate>
+      
+      <guid>https://pipida323.github.io/post/hugo%E6%8C%87%E4%BB%A4/</guid>
+      <description> 新建文件：hugo new 目录/文件名 注意事项：  指令中新建的目录默认存放在项目根目录下的content下（例如我的根目录是：D:\Program Files\hugo\myblog） 新建的文件存放于上面的目录中  部署到github上去 #根目录下 hugo --theme=主题 --baseUrl=&amp;quot;https://pipida323.github.io&amp;quot; --buildDrafts  </description>
+    </item>
+    
+    <item>
+      <title>Hugo博客搭建方法</title>
+      <link>https://pipida323.github.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 24 Jul 2019 13:31:28 +0800</pubDate>
+      
+      <guid>https://pipida323.github.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/</guid>
+      <description> windows版下载地址：https://github.com/gohugoio/hugo/releases  下载.zip压缩包：
+ 解压到自己想要的目录（我的目录为：D:\Program Files\hugo），并且将该目录添加到环境变量
+ 进入该目录下shift+右键 打开cmd：
+  主题下载：https://themes.gohugo.io/  进入到博客根目录的themes目录下：（我的目录为：D:\Program Files\hugo\myblog\themes） 使用git工具克隆自己想要的主题  启动服务： 根目录&amp;gt; hugo new site /路径/博客名 根目录&amp;gt; hugo new site /路径/博客名 根目录&amp;gt; hugo server -t 主题 --buildDrafts   服务成功开启会给地址：例如Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)  </description>
+    </item>
+    
+  </channel>
+</rss>

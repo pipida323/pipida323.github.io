@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Redis基本命令 // 皮皮达的笔记</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://pipida323.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis基本命令"/>
+<meta name="twitter:description" content="key命令 del key
+key存在时删除key  若key存在，则删除并返回删除记录数 若key不存在，则提示0  127.0.0.1:6379&gt; key * (error) ERR unknown command &#39;key&#39; 127.0.0.1:6379&gt; keys * 1) &quot;a&quot; 127.0.0.1:6379&gt; del a (integer) 1 127.0.0.1:6379&gt; 127.0.0.1:6379&gt; del a (integer) 0  exists key
+判断key是否存在 127.0.0.1:6379&gt; keys * 1) &quot;b&quot; 2) &quot;a&quot; 127.0.0.1:6379&gt; exists a b (integer) 2  ttl key
+查看key过期时间  -1表示永久 -2表示已过期  expire key 秒数
+设置key的过期时间 127.0.0.1:6379&gt; expire b 30 (integer) 1 127.0.0.1:6379&gt; ttl b (integer) 28 127."/>
+
+    <meta property="og:title" content="Redis基本命令" />
+<meta property="og:description" content="key命令 del key
+key存在时删除key  若key存在，则删除并返回删除记录数 若key不存在，则提示0  127.0.0.1:6379&gt; key * (error) ERR unknown command &#39;key&#39; 127.0.0.1:6379&gt; keys * 1) &quot;a&quot; 127.0.0.1:6379&gt; del a (integer) 1 127.0.0.1:6379&gt; 127.0.0.1:6379&gt; del a (integer) 0  exists key
+判断key是否存在 127.0.0.1:6379&gt; keys * 1) &quot;b&quot; 2) &quot;a&quot; 127.0.0.1:6379&gt; exists a b (integer) 2  ttl key
+查看key过期时间  -1表示永久 -2表示已过期  expire key 秒数
+设置key的过期时间 127.0.0.1:6379&gt; expire b 30 (integer) 1 127.0.0.1:6379&gt; ttl b (integer) 28 127." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pipida323.github.io/post/redis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" />
+<meta property="article:published_time" content="2019-07-24T20:03:05&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-24T20:03:05&#43;08:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://pipida323.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>皮皮达的笔记</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Redis基本命令</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jul 24, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h1 id="key命令">key命令</h1>
+
+<p><a href="#">del key</a></p>
+
+<h4 id="key存在时删除key">key存在时删除key</h4>
+
+<ul>
+<li>若key存在，则删除并返回删除记录数</li>
+<li>若key不存在，则提示0</li>
+</ul>
+
+<pre><code class="language-shell">127.0.0.1:6379&gt; key *
+(error) ERR unknown command 'key'
+127.0.0.1:6379&gt; keys *
+1) &quot;a&quot;
+127.0.0.1:6379&gt; del a
+(integer) 1
+127.0.0.1:6379&gt;
+127.0.0.1:6379&gt; del a
+(integer) 0
+</code></pre>
+
+<hr />
+
+<p><a href="#">exists key</a></p>
+
+<h4 id="判断key是否存在">判断key是否存在</h4>
+
+<pre><code class="language-shell">127.0.0.1:6379&gt; keys *
+1) &quot;b&quot;
+2) &quot;a&quot;
+127.0.0.1:6379&gt; exists a b
+(integer) 2
+
+</code></pre>
+
+<hr />
+
+<p><a href="#">ttl key</a></p>
+
+<h4 id="查看key过期时间">查看key过期时间</h4>
+
+<ul>
+<li>-1表示永久</li>
+<li>-2表示已过期</li>
+</ul>
+
+<p><a href="#">expire key 秒数</a></p>
+
+<h4 id="设置key的过期时间">设置key的过期时间</h4>
+
+<pre><code class="language-shell">127.0.0.1:6379&gt; expire b 30
+(integer) 1
+127.0.0.1:6379&gt; ttl b
+(integer) 28
+127.0.0.1:6379&gt; ttl b
+(integer) 26
+</code></pre>
+
+<p><a href="#">ttl key</a></p>
+
+<h4 id="移出key的过期时间-将key变为永久">移出key的过期时间，将key变为永久</h4>
+
+<pre><code class="language-shell">127.0.0.1:6379&gt; expire b 20
+(integer) 1
+127.0.0.1:6379&gt; 
+127.0.0.1:6379&gt; ttl b
+(integer) 17
+127.0.0.1:6379&gt; persist b
+(integer) 1
+127.0.0.1:6379&gt; ttl b
+(integer) -1
+
+</code></pre>
+
+<hr />
+
+<p><a href="#">keys */keys ?</a></p>
+
+<h4 id="查找符合的key">查找符合的key</h4>
+
+<ul>
+<li>* 匹配n个字符</li>
+
+<li><p>? 匹配1个字符</p>
+
+<pre><code class="language-shell">127.0.0.1:6379&gt; keys *
+1) &quot;user:1&quot;
+2) &quot;user:2&quot;
+3) &quot;b&quot;
+4) &quot;user:3&quot;
+5) &quot;a&quot;
+</code></pre>
+
+<pre><code class="language-shell">127.0.0.1:6379&gt; keys user:?
+1) &quot;user:1&quot;
+2) &quot;user:2&quot;
+127.0.0.1:6379&gt; keys user:*
+1) &quot;user:1&quot;
+2) &quot;user:2&quot;
+3) &quot;user:333&quot;
+
+</code></pre></li>
+</ul>
+
+<hr />
+
+<p><a href="#">rename key newname</a></p>
+
+<h4 id="修改key的名称">修改key的名称</h4>
+
+<pre><code class="language-shell">127.0.0.1:6379&gt; keys a
+1) &quot;a&quot;
+127.0.0.1:6379&gt; rename a A
+OK
+127.0.0.1:6379&gt; keys A
+1) &quot;A&quot;
+</code></pre>
+
+<hr />
+
+<hr />
+
+<h1 id="数据类型">数据类型</h1>
+
+<h3 id="redis支持string-字符串-hash-哈希-list-列表-set-集合-zset-有序集合">redis支持string（字符串）,hash,（哈希）list,（列表）set,（集合），zset（有序集合）</h3>
+
+<ul>
+<li>string
+
+<ol>
+<li>是redis最基本的数据类型，一个key对应一个value</li>
+<li>一个键最大能存储512M</li>
+<li>可以包含任何数据，例如jpg图片或者序列化对象</li>
+<li>是二进制安全的
+
+<ul>
+<li>编码、解码在客户端完成，执行效率高</li>
+<li>不需要频繁地解编码、不会出现乱码</li>
+</ul></li>
+</ol></li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
